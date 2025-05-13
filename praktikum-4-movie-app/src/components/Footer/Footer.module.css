@@ -1,6 +1,6 @@
 /* Small Screen */
 .container {
-    background-color: #4361ee;
+    background-color: #39ff12;
     color: #fff;
     padding: 1rem;
     text-align: center;
@@ -17,15 +17,15 @@
 /* Medium Screen */
 @media (min-width: 768px) {
     /*
-     * Nothing TODO here.
-     * We dont change styling footer. 
-     */
+   * Nothing TODO here.
+   * We dont change styling footer. 
+   */
 }
 
 /* Large Screen */
 @media (min-width: 992px) {
     /*
-     * Nothing TODO here.
-     * We dont change styling footer. 
-     */
+   * Nothing TODO here.
+   * We dont change styling footer. 
+   */
 }

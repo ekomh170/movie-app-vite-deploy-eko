@@ -14,7 +14,7 @@
 }
 
 .hero__title {
-    color: #4361ee;
+    color: #4cbb17;
     margin-bottom: 1rem;
     font-size: 2.44rem;
 }
@@ -34,7 +34,7 @@
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 10px;
-    background-color: #4361ee;
+    background-color: #4cbb17;
     color: #fff;
 }
 
@@ -47,9 +47,9 @@
 /* Medium Screen */
 @media (min-width: 768px) {
     /*
-     * Nothing TODO Here.
-     * We dont change style Hero. 
-     */
+   * Nothing TODO Here.
+   * We dont change style Hero. 
+   */
 }
 
 /* Large Screen */
