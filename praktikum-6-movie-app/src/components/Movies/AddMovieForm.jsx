@@ -19,11 +19,25 @@ export default function AddMovieForm(props) {
     }
 
     function handleSubmit(e) {
+        e.preventDefault();
+
+        let hasError = false;
+
         if (title === '') {
             setIsTitleError(true);
-        } else if (date === '') {
-            setIsDateError(true);
+            hasError = true;
         } else {
+            setIsTitleError(false);
+        }
+
+        if (date === '') {
+            setIsDateError(true);
+            hasError = true;
+        } else {
+            setIsDateError(false);
+        }
+
+        if (!hasError) {
             const movie = {
                 id: nanoid(),
                 title: title,
@@ -33,10 +47,10 @@ export default function AddMovieForm(props) {
             };
             setMovies([...movies, movie]);
 
-            setIsTitleError(false);
-            setIsDateError(false);
+            // Reset form
+            setTitle('');
+            setDate('');
         }
-        e.preventDefault();
     }
 
     return (
