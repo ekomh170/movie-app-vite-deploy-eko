@@ -6,7 +6,7 @@ function Footer() {
             <footer className={styles.footer}></footer>
             <h2 className={styles.footer__title}>Movie App</h2>
             <p className={styles.footer__author}>
-                Created by Eko Muchamad Haryono
+                Created by: Eko Muchamad Haryono
             </p>
         </div>
     );
