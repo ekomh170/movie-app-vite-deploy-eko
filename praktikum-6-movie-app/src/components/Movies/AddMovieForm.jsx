@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import styles from './MovieForm.module.css';
+import Alert from '../Alert/Alert';
 
 export default function AddMovieForm(props) {
     const { movies, setMovies } = props;
@@ -40,7 +41,10 @@ export default function AddMovieForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={styles.formContainer}>
+            <form
+                onSubmit={handleSubmit}
+                className={styles.formContainer}
+                style={{ marginBottom: '20px' }}>
                 <input
                     id="title"
                     type="text"
@@ -48,7 +52,7 @@ export default function AddMovieForm(props) {
                     onChange={handleTitle}
                     className={styles.input}
                 />
-                {isTitleError && <p>Title Wajib Diisi</p>}
+                {isTitleError && <Alert>Title Wajib Diisi</Alert>}
 
                 <input
                     id="date"
@@ -57,7 +61,7 @@ export default function AddMovieForm(props) {
                     onChange={handleDate}
                     className={styles.input}
                 />
-                {isDateError && <p>Date Wajib Diisi</p>}
+                {isDateError && <Alert>Date Wajib Diisi</Alert>}
 
                 <button type="submit" className={styles.button}>
                     Add Movie
