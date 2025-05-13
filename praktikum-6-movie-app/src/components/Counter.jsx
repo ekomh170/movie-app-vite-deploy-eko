@@ -1,4 +1,4 @@
-import styles from '../components/Movies/Movies.module.css';
+import styles from './Movies/Movies.module.css';
 import { useState } from 'react';
 
 export default function Counter() {
