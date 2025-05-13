@@ -1,17 +1,15 @@
-// Header, Profile, Main, and Footer components
-import React from 'react';
-import './App.css';
 import Hello from './components/Hello';
+import './App.css';
+import Home from './pages/Home';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import Hero from './components/Hero/Hero';
 
-// App component
 function App() {
     return (
-        <div>
-            <h2>This Is Create React App</h2>
-            {/* Hello komponen Belajar Frontend */}
-            <Hello name="Eko Muchamad Haryono" />
-            {/* <Hello name="Friends - Muhammad Akbar Maulana" /> */}
-        </div>
+        <>
+            <Home />
+        </>
     );
 }
 
