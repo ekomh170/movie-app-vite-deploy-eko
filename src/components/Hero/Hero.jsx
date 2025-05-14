@@ -9,10 +9,12 @@ function Hero() {
                         <h2 className={styles.hero__title}>Spiderman</h2>
                         <h3 className={styles.hero__genre}>Genre: Action</h3>
                         <p className={styles.hero__description}>
-                            Spiderman is a superhero appearing in American comic
-                            books published by Marvel Comics. The character was
-                            co-created by writer Stan Lee and artist Steve
-                            Ditko, and introduced in Spider-Man #1
+                            Spiderman No Way Home retells a story of Peter
+                            Parker. At that time he was slandered by Mysterio,
+                            Spiderman's enemy in the previous film, Spider-Man
+                            Far From Home. Mysterio revealed the identity behind
+                            the Spiderman costume and slandered him that Peter
+                            was a murderer and a villain.
                         </p>
                         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
                         <button className={styles.hero__button}>Watch</button>
