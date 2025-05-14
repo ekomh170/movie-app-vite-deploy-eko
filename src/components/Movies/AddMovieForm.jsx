@@ -4,13 +4,12 @@ import styles from './MovieForm.module.css';
 import Alert from '../Alert/Alert';
 
 export default function AddMovieForm({ movies, setMovies }) {
-    // Menambahkan atribut name di setiap input.
-    // Tujuannya agar fungsi mengupdate state berdasarkan name.
+    // Membuat state formData untuk menyimpan data form
     const [formData, setFormData] = useState({
         title: '',
         date: '',
         poster: '',
-        type: 'Movie',
+        type: '',
     });
 
     const [errors, setErrors] = useState({
@@ -19,7 +18,7 @@ export default function AddMovieForm({ movies, setMovies }) {
         poster: false,
     });
 
-    // Handler tunggal berdasarkan atribut name
+    // Fungsi untuk menangani perubahan input
     function handleChange(e) {
         const { name, value } = e.target;
         setFormData({
@@ -28,41 +27,44 @@ export default function AddMovieForm({ movies, setMovies }) {
         });
     }
 
-    // Validasi input
+    // Destructuring state formData
+    const { title, date, poster, type } = formData;
+
+    // Fungsi validasi
     function validate() {
         const newErrors = {
-            title: formData.title === '',
-            date: formData.date === '',
-            poster: formData.poster === '',
+            title: title === '',
+            date: date === '',
+            poster: poster === '',
         };
         setErrors(newErrors);
         return !Object.values(newErrors).includes(true);
     }
 
-    // Tambah movie baru
+    // Fungsi tambah movie baru
     function addMovie() {
         const newMovie = {
             id: nanoid(),
-            title: formData.title,
-            year: formData.date,
-            type: formData.type,
-            poster: formData.poster,
+            title: title,
+            year: date,
+            type: type,
+            poster: poster,
         };
         setMovies([...movies, newMovie]);
         resetForm();
     }
 
-    // Reset form ke awal
+    // Reset form ke nilai awal
     function resetForm() {
         setFormData({
             title: '',
             date: '',
             poster: '',
-            type: 'Movie',
+            type: '',
         });
     }
 
-    // Submit form
+    // Fungsi submit form
     function handleSubmit(e) {
         e.preventDefault();
         validate() && addMovie();
@@ -73,11 +75,11 @@ export default function AddMovieForm({ movies, setMovies }) {
             onSubmit={handleSubmit}
             className={styles.formContainer}
             style={{ marginBottom: '20px' }}>
-            {/* Menambahkan atribut name untuk mengaitkan input dengan state */}
+            {/* Input Title */}
             <input
                 id="title"
                 type="text"
-                value={formData.title}
+                value={title}
                 name="title"
                 onChange={handleChange}
                 className={styles.input}
@@ -85,10 +87,11 @@ export default function AddMovieForm({ movies, setMovies }) {
             />
             {errors.title && <Alert>Title wajib diisi</Alert>}
 
+            {/* Input Date */}
             <input
                 id="date"
                 type="text"
-                value={formData.date}
+                value={date}
                 name="date"
                 onChange={handleChange}
                 className={styles.input}
@@ -96,10 +99,11 @@ export default function AddMovieForm({ movies, setMovies }) {
             />
             {errors.date && <Alert>Date wajib diisi</Alert>}
 
+            {/* Input Poster */}
             <input
                 id="poster"
                 type="text"
-                value={formData.poster}
+                value={poster}
                 name="poster"
                 onChange={handleChange}
                 className={styles.input}
@@ -107,16 +111,18 @@ export default function AddMovieForm({ movies, setMovies }) {
             />
             {errors.poster && <Alert>Poster wajib diisi</Alert>}
 
+            {/* Select Type */}
             <select
                 id="type"
+                value={type}
                 name="type"
-                value={formData.type}
                 onChange={handleChange}
                 className={styles.input}>
                 <option value="Movie">Movie</option>
                 <option value="Series">Series</option>
             </select>
 
+            {/* Tombol Submit */}
             <button type="submit" className={styles.button}>
                 Add Movie
             </button>
