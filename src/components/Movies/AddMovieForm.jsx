@@ -4,70 +4,80 @@ import styles from './MovieForm.module.css';
 import Alert from '../Alert/Alert';
 
 export default function AddMovieForm({ movies, setMovies }) {
-    // Membuat state formData untuk menyimpan data form
+    // State tunggal untuk form input
     const [formData, setFormData] = useState({
         title: '',
         date: '',
         poster: '',
-        type: '',
+        type: 'Movie',
     });
 
-    const [errors, setErrors] = useState({
-        title: false,
-        date: false,
-        poster: false,
-    });
+    // Refactor: State tunggal untuk error, bukan per field
+    const [errors, setErrors] = useState({});
 
-    // Fungsi untuk menangani perubahan input
+    // Destructuring formData
+    const { title, date, poster, type } = formData;
+
+    // Handle perubahan input form
     function handleChange(e) {
         const { name, value } = e.target;
+
         setFormData({
             ...formData,
             [name]: value,
         });
+
+        // Reset error ketika user mulai mengetik
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: false,
+        }));
     }
 
-    // Destructuring state formData
-    const { title, date, poster, type } = formData;
-
-    // Fungsi validasi
+    // Validasi input form
     function validate() {
-        const newErrors = {
-            title: title === '',
-            date: date === '',
-            poster: poster === '',
-        };
+        const newErrors = {};
+        if (title.trim() === '') newErrors.title = true;
+        if (date.trim() === '') newErrors.date = true;
+        if (poster.trim() === '') newErrors.poster = true;
+
         setErrors(newErrors);
-        return !Object.values(newErrors).includes(true);
+
+        // Jika tidak ada error, return true
+        return Object.keys(newErrors).length === 0;
     }
 
-    // Fungsi tambah movie baru
+    // Tambahkan movie baru ke list
     function addMovie() {
         const newMovie = {
             id: nanoid(),
-            title: title,
+            title,
             year: date,
-            type: type,
-            poster: poster,
+            type,
+            poster,
         };
+
         setMovies([...movies, newMovie]);
         resetForm();
     }
 
-    // Reset form ke nilai awal
+    // Reset form input
     function resetForm() {
         setFormData({
             title: '',
             date: '',
             poster: '',
-            type: '',
+            type: 'Movie',
         });
+        setErrors({});
     }
 
-    // Fungsi submit form
+    // Handle submit form
     function handleSubmit(e) {
         e.preventDefault();
-        validate() && addMovie();
+        if (validate()) {
+            addMovie();
+        }
     }
 
     return (
