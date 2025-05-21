@@ -1,31 +1,56 @@
+// Counter.js
+
+// Import useState dan useEffect untuk menggunakan state dan side effect.
+import { useState, useEffect } from 'react';
 import styles from './Movies/Movies.module.css';
-import { useState } from 'react';
 
 export default function Counter() {
-    const [result, setResult] = useState(0);
-
     /**
-     * Membuat fungsi handleClick1
-     * Dijalankan ketika button diklik
+     * ============================
+     * useState - Tanpa Destructuring
+     * ============================
      */
-    const handleClick1 = () => {
-        setResult(result + 1);
+    // useState mengembalikan sepasang value
+    const stateAngka = useState(0);
+
+    // Menyimpan state dari index 0
+    const angka = stateAngka[0];
+
+    // Menyimpan fungsi dari index 1
+    const setAngka = stateAngka[1];
+
+    // Fungsi untuk menambah angka
+    const addAngka = () => {
+        setAngka(angka + 1);
+        console.log('Tambah angka:', angka + 1);
     };
 
-    // Menambahkan event click pada button
+    /**
+     * ============================
+     * useEffect - Side Effect
+     * ============================
+     * Menjalankan useEffect untuk melakukan side effect.
+     * Parameter pertama (callback):
+     * - Dijalankan setelah render (lifecycle mount dan update)
+     */
+    useEffect(() => {
+        console.log('Lifecycle: Component dimount');
+    });
+
+    console.log('Lifecycle: Component dirender');
 
     return (
         <div>
-            <p style={{ textAlign: 'center' }}>Result: {result}</p>
+            {/* Menampilkan angka */}
+            <p style={{ textAlign: 'center' }}>Result: {angka}</p>
+
+            {/* Tombol untuk menambah angka */}
             <button
-                type="submit"
-                onClick={handleClick1}
+                onClick={addAngka}
                 className={styles.button}
                 style={{
-                    // Ketengahkan button
                     display: 'block',
                     margin: 'auto',
-                    // Buat Kebawah Space Dengan Form
                     marginBottom: '20px',
                 }}>
                 Add
@@ -33,3 +58,13 @@ export default function Counter() {
         </div>
     );
 }
+
+/**
+ * ============================
+ * Destructuring Array - useState
+ * ============================
+ * useState mengembalikan sepasang value
+ * Melakukan destructuring array untuk mengambil value.
+ *
+ * const [angka, setAngka] = useState(0);
+ */
