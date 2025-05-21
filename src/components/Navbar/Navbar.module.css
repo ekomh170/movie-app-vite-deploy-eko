@@ -20,10 +20,23 @@
     display: flex;
     flex-direction: column;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar__item {
     margin-bottom: 1rem;
+}
+
+/* Link styling */
+.navbar__link {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.navbar__link:hover {
+    color: #d4f1c5;
 }
 
 /* Medium Screen */
@@ -49,8 +62,19 @@
 
 /* Large Screen */
 @media (min-width: 992px) {
-    /* 
-   * Nothing TODO HERE.
-   * We haven't styling Navbar.
-   */
+    .navbar__brand {
+        font-size: 3rem;
+    }
+
+    .navbar__item {
+        margin: 0 2rem;
+    }
+
+    .navbar__link {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        padding: 2rem 4rem;
+    }
 }

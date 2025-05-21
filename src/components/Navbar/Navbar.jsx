@@ -7,22 +7,33 @@ export default function Navbar() {
             <div className={styles.navbar}>
                 {/* Brand logo */}
                 <div className={styles.navbar__brand}>Movie App</div>
-                {/* Add your navigation links here */}
+
+                {/* Navigation links */}
                 <ul className={styles.navbar__list}>
                     <li className={styles.navbar__item}>
-                        <Link to="/">Home</Link>
+                        <Link className={styles.navbar__link} to="/">
+                            Home
+                        </Link>
                     </li>
                     <li className={styles.navbar__item}>
-                        <Link to="/add-movie">Add Movie</Link>
+                        <Link className={styles.navbar__link} to="/add-movie">
+                            Add Movie
+                        </Link>
                     </li>
                     <li className={styles.navbar__item}>
-                        <Link to="/popular">Popular</Link>
+                        <Link className={styles.navbar__link} to="/popular">
+                            Popular
+                        </Link>
                     </li>
                     <li className={styles.navbar__item}>
-                        <Link to="/now-playing">Now Playing</Link>
+                        <Link className={styles.navbar__link} to="/now-playing">
+                            Now Playing
+                        </Link>
                     </li>
                     <li className={styles.navbar__item}>
-                        <Link to="/top-rated">Top Rated</Link>
+                        <Link className={styles.navbar__link} to="/top-rated">
+                            Top Rated
+                        </Link>
                     </li>
                 </ul>
             </div>
