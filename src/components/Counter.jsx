@@ -2,13 +2,18 @@
 import { useState, useEffect } from 'react';
 import styles from './Movies/Movies.module.css';
 
+// ✅ Fungsi terpisah untuk manipulasi DOM (refactor)
+function manipulateDOM(angka) {
+    console.log('Lifecycle: Component mount'); // lebih tepat: mount atau update
+    document.title = `Result: ${angka}`;
+}
+
 export default function Counter() {
     /**
      * ============================
      * useState - Tanpa Destructuring
      * ============================
      */
-    // useState mengembalikan sepasang value
     // const stateAngka = useState(0);
     // const angka = stateAngka[0];
     // const setAngka = stateAngka[1];
@@ -24,26 +29,24 @@ export default function Counter() {
 
     /**
      * ============================
-     * useEffect - Side Effect
+     * useEffect - Side Effect (Update Lifecycle)
      * ============================
-     * Menjalankan useEffect untuk melakukan side effect.
-     * Parameter pertama (callback):
-     * - Dijalankan setelah render (lifecycle mount dan update)
+     * Digunakan untuk menangani efek samping ketika nilai `angka` berubah
+     * (contoh: update title dokumen setiap klik tombol).
      */
 
-    // ❌ useEffect hanya jalan saat mount → tidak bereaksi terhadap angka
+    // ❌ Ini hanya berjalan sekali saat mount, tidak untuk update
     // useEffect(() => {
     //     console.log('Lifecycle: Component dimount');
     //     document.title = `Result: ${angka}`;
     // }, []);
 
-    // ✅ Perubahan baru: efek dijalankan setiap kali angka berubah
+    // ✅ Refactor: Gunakan fungsi luar agar lebih modular & testable
     useEffect(() => {
-        console.log('Lifecycle: Component dimount or update'); // ✅ bisa digunakan untuk mount & update
-        document.title = `Result: ${angka}`; // ✅ akses DOM: ubah title dokumen
-    }, [angka]); // ✅ efek dijalankan saat angka berubah
+        manipulateDOM(angka);
+    }, [angka]);
 
-    // ✅ Ini selalu dicetak setiap kali komponen dirender (baik saat mount maupun update)
+    // ✅ Ini akan selalu muncul setiap kali komponen dirender
     console.log('Lifecycle: Component dirender');
 
     return (
@@ -68,21 +71,14 @@ export default function Counter() {
 
 /**
  * ============================
- * Destructuring Array - useState
- * ============================
- * useState mengembalikan sepasang value
- * Melakukan destructuring array untuk mengambil value.
- *
- * const [angka, setAngka] = useState(0);
- *
- * ============================
  * Penjelasan Lifecycle (Sesuai Gambar)
  * ============================
- * - console.log("Lifecycle: Component dirender") akan muncul setiap render.
- * - useEffect(() => {...}, [angka]) dijalankan setiap kali angka berubah.
- * - document.title adalah contoh side effect: akses DOM (bukan bagian dari UI langsung).
+ * - `useEffect(() => {...}, [angka])` dipanggil setiap kali `angka` berubah.
+ * - `console.log("Lifecycle: Component dirender")` muncul di setiap render.
+ * - `document.title` adalah contoh efek samping yang bukan bagian dari UI.
+ * - Fungsi `manipulateDOM()` digunakan sebagai refactor agar efek bisa dipisah dari hook.
  *
- * Catatan Perubahan:
- * - useEffect yang hanya dijalankan saat mount (dengan []) dikomentari sebagai referensi.
- * - useEffect aktif sekarang berjalan setiap kali `angka` berubah.
+ * Catatan:
+ * - useEffect([]) dikomentari sebagai referensi efek sekali jalan (mount only).
+ * - Versi sekarang mengikuti refactor sesuai gambar Hero.jsx.
  */
