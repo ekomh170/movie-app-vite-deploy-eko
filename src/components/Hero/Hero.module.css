@@ -1,55 +1,63 @@
-/* Small Screen */
+/* Hero.module.css */
 .container {
-    margin: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 .hero {
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .hero__left {
-    margin-bottom: 1rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero__right {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
 }
 
 .hero__title {
-    color: #4cbb17;
+    font-size: 2rem;
+    color: #34c924;
     margin-bottom: 1rem;
-    font-size: 2.44rem;
 }
 
 .hero__genre {
-    color: #b5179e;
+    font-size: 1.2rem;
+    color: #b20086;
     margin-bottom: 1rem;
-    font-size: 1.59rem;
 }
 
 .hero__description {
-    color: #64748b;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1.5rem;
 }
 
 .hero__button {
-    padding: 0.8rem 2rem;
+    background-color: #34c924;
+    color: white;
+    padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: 10px;
-    background-color: #4cbb17;
-    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .hero__image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 25px;
-}
-
-/* Medium Screen */
-@media (min-width: 768px) {
-    /*
-   * Nothing TODO Here.
-   * We dont change style Hero. 
-   */
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Large Screen */
@@ -65,13 +73,5 @@
         justify-content: space-between;
         align-items: center;
         text-align: left;
-    }
-
-    .hero__left {
-        flex-basis: 40%;
-    }
-
-    .hero__right {
-        flex-basis: 60%;
     }
 }
