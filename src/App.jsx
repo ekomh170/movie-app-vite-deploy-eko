@@ -14,10 +14,12 @@ import Layout from './Layout';
 
 // Theme
 import theme from './utils/constants/theme';
+import GlobalStyle from './GlobalStyle';
 
 function App() {
     return (
         <ThemeProvider theme={theme}>
+            <GlobalStyle />
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
