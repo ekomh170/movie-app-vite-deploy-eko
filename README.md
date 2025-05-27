@@ -20,3 +20,4 @@
 7. [Pertemuan 08 - UTS](https://github.com/ekomh170/frontend-uts-se1-2025-pengingat-habit-semester-4.git)
 8. [Tugas 3/Pertemuan 09](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-3-pertemuan-9)
 9. [Pertemuan 10](https://github.com/ekomh170/frontend-2025-se01/tree/pertemuan-10)
+10. [Tugas 4/Pertemuan 11](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-4-pertemuan-11)
