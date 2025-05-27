@@ -26,38 +26,49 @@
 }
 
 .hero__title {
-    font-size: 2rem;
-    color: #34c924;
+    font-size: 2.4rem;
+    color: #222;
     margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .hero__genre {
-    font-size: 1.2rem;
-    color: #b20086;
+    font-size: 1.1rem;
+    color: #4cbb17;
     margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .hero__description {
-    font-size: 1rem;
-    color: #333;
+    font-size: 1.05rem;
+    color: #444;
     margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .hero__button {
-    background-color: #34c924;
-    color: white;
-    padding: 0.6rem 1.2rem;
+    background: linear-gradient(90deg, #4cbb17 60%, #39ff12 100%);
+    color: #fff;
+    padding: 0.7rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(76, 187, 23, 0.08);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-
+.hero__button:hover {
+    background: linear-gradient(90deg, #39ff12 60%, #4cbb17 100%);
+    box-shadow: 0 4px 16px rgba(76, 187, 23, 0.16);
+    transform: translateY(-2px) scale(1.04);
+}
 .hero__image {
     width: 100%;
     max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* Large Screen */

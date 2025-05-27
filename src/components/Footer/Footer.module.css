@@ -1,31 +1,36 @@
 /* Small Screen */
 .container {
-    background-color: #39ff12;
+    background-color: #222;
     color: #fff;
-    padding: 1rem;
-    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 2px 8px rgba(76, 187, 23, 0.08);
+    margin-bottom: 0;
 }
 
 .footer__title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
 }
 
 .footer__author {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #e0ffe0;
 }
 
 /* Medium Screen */
 @media (min-width: 768px) {
-    /*
-   * Nothing TODO here.
-   * We dont change styling footer. 
-   */
+    .container {
+        padding: 2rem 4rem 1rem 4rem;
+    }
 }
 
 /* Large Screen */
 @media (min-width: 992px) {
-    /*
-   * Nothing TODO here.
-   * We dont change styling footer. 
-   */
+    .container {
+        padding: 2.5rem 8rem 1.5rem 8rem;
+    }
 }

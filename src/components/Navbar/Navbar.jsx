@@ -1,12 +1,26 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            style={{
+                boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+                borderRadius: '0 0 12px 12px',
+                marginBottom: '1.5rem',
+            }}>
             <div className={styles.navbar}>
                 {/* Brand logo */}
-                <div className={styles.navbar__brand}>Movie App</div>
+                <div
+                    className={styles.navbar__brand}
+                    style={{
+                        letterSpacing: '2px',
+                        color: '#fff',
+                        textShadow: '0 2px 8px #4cbb17',
+                    }}>
+                    Movie App
+                </div>
 
                 {/* Navigation links */}
                 <ul className={styles.navbar__list}>
