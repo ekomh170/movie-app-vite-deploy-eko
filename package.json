@@ -1,5 +1,5 @@
 {
-    "name": "pertemuan-10",
+    "name": "tugas-4-pertemuan-11",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -12,7 +12,8 @@
     "dependencies": {
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "react-router-dom": "^7.6.0"
+        "react-router-dom": "^7.6.0",
+        "styled-components": "^6.1.18"
     },
     "devDependencies": {
         "@eslint/js": "^9.25.0",
