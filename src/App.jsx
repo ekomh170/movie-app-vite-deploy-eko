@@ -1,5 +1,6 @@
 // Layout component for the application
 import { Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 // Pages
 import Home from './pages/Home';
@@ -11,9 +12,12 @@ import TopRatedMovie from './pages/TopRated';
 // Layout
 import Layout from './Layout';
 
+// Theme
+import theme from './utils/constants/theme';
+
 function App() {
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -23,7 +27,7 @@ function App() {
                     <Route path="/top-rated" element={<TopRatedMovie />} />
                 </Routes>
             </Layout>
-        </>
+        </ThemeProvider>
     );
 }
 
