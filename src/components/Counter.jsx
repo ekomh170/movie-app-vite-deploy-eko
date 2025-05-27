@@ -1,12 +1,12 @@
-// Import useState dan useEffect untuk menggunakan state dan side effect.
-import { useState, useEffect } from 'react';
+// Import hanya useState, hapus useEffect karena tidak dipakai
+import { useState } from 'react';
 import styles from './Movies/Movies.module.css';
 
-// ✅ Fungsi terpisah untuk manipulasi DOM (refactor)
-function manipulateDOM(angka) {
-    console.log('Lifecycle: Component mount'); // lebih tepat: mount atau update
-    document.title = `Result: ${angka}`;
-}
+// Fungsi terpisah untuk manipulasi DOM (refactor)
+// HAPUS atau KOMENTARI kode yang mengubah document.title
+// function manipulateDOM(angka) {
+//     document.title = `Result: ${angka}`;
+// }
 
 export default function Counter() {
     /**
@@ -18,7 +18,7 @@ export default function Counter() {
     // const angka = stateAngka[0];
     // const setAngka = stateAngka[1];
 
-    // ✅ Diganti ke bentuk destructuring agar lebih clean
+    // Diganti ke bentuk destructuring agar lebih clean
     const [angka, setAngka] = useState(0);
 
     // Fungsi untuk menambah angka
@@ -35,18 +35,19 @@ export default function Counter() {
      * (contoh: update title dokumen setiap klik tombol).
      */
 
-    // ❌ Ini hanya berjalan sekali saat mount, tidak untuk update
+    // Ini hanya berjalan sekali saat mount, tidak untuk update
     // useEffect(() => {
     //     console.log('Lifecycle: Component dimount');
     //     document.title = `Result: ${angka}`;
     // }, []);
 
-    // ✅ Refactor: Gunakan fungsi luar agar lebih modular & testable
-    useEffect(() => {
-        manipulateDOM(angka);
-    }, [angka]);
+    // Refactor: Gunakan fungsi luar agar lebih modular & testable
+    // HAPUS atau KOMENTARI useEffect yang mengubah document.title
+    // useEffect(() => {
+    //     manipulateDOM(angka);
+    // }, [angka]);
 
-    // ✅ Ini akan selalu muncul setiap kali komponen dirender
+    // Ini akan selalu muncul setiap kali komponen dirender
     console.log('Lifecycle: Component dirender');
 
     return (
