@@ -1,6 +1,7 @@
 // Import hook React dan CSS module
 import { useEffect, useState } from 'react';
 import styles from './Hero.module.css';
+import Button from '../Button/Button';
 
 function Hero() {
     // State untuk menyimpan data movie
@@ -38,7 +39,10 @@ function Hero() {
                     <p className={styles.hero__description}>{movie.Plot}</p>
 
                     {/* Tombol "Watch" (belum ada aksi) */}
-                    <button className={styles.hero__button}>Watch</button>
+                    <Button variant="primary">Watch</Button>
+                    {/* <Button variant="primary" full>
+                        Watch
+                    </Button> */}
                 </div>
 
                 <div className={styles.hero__right}>

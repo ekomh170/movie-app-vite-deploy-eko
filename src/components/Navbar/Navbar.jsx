@@ -12,7 +12,7 @@ export default function Navbar() {
             }}>
             <div className={styles.navbar}>
                 {/* Brand logo */}
-                <div
+                <h1
                     className={styles.navbar__brand}
                     style={{
                         letterSpacing: '2px',
@@ -20,7 +20,7 @@ export default function Navbar() {
                         textShadow: '0 2px 8px #4cbb17',
                     }}>
                     Movie App
-                </div>
+                </h1>
 
                 {/* Navigation links */}
                 <ul className={styles.navbar__list}>

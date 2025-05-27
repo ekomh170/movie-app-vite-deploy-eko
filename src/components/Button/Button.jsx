@@ -1,18 +1,27 @@
-// Import Styled Component
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-/**
- - Membuat variable Button (Component)
- - Buat element button dan beri styling
- - Styling menggunakan tagged template
-*/
+const colors = {
+    primary: '#4cbb17',
+    secondary: '#b5179e',
+};
+
 const Button = styled.button`
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 10px;
     color: #fff;
-    background-color: #4361ee;
     cursor: pointer;
+
+    // PROPS VARIANT
+    background-color: ${({ variant }) => colors[variant] || colors['primary']};
+
+    // PROPS FULL
+    ${({ full }) =>
+        full &&
+        css`
+            display: block;
+            width: 100%;
+        `}
 `;
 
 export default Button;

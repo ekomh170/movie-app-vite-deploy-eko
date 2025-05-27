@@ -5,6 +5,10 @@
     color: #fff;
 }
 
+nav {
+    background-color: #4cbb17;
+}
+
 .navbar {
     display: flex;
     flex-direction: column;
