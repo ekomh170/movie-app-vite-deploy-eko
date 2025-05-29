@@ -1,3 +1,7 @@
+@import 'tailwindcss';
+
+/* Hapus @plugin dan @custom-variant karena tidak didukung di file CSS, plugin sudah otomatis aktif jika diinstall dan dikonfigurasi di Tailwind v4 */
+
 :root {
     font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;

@@ -12,9 +12,9 @@ function Home() {
         <>
             <Hero />
             <Button variant="primary">Lihat</Button>
-            {/* <Button variant="secondary" full>
+            <Button variant="secondary" full>
                 Lihat
-            </Button> */}
+            </Button>
             <Movies movies={movies} setMovies={setMovies} />
             <Counter />
             <AddMovieForm movies={movies} setMovies={setMovies} />
