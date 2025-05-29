@@ -20,14 +20,14 @@ const Button = styled.button`
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
-    background-color: ${({ variant, theme }) =>
-        theme.colors[variant] || theme.colors.primary};
+    background-color: ${({ $variant, theme }) =>
+        theme.colors[$variant] || theme.colors.primary};
     font-size: ${({ size = 'md' }) => sizeMap[size].fontSize};
     padding: ${({ size = 'md' }) => sizeMap[size].padding};
 
     // PROPS FULL
-    ${({ full }) =>
-        full &&
+    ${({ $full }) =>
+        $full &&
         css`
             display: block;
             width: 100%;

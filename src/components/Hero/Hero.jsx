@@ -1,5 +1,6 @@
 // Import hook React dan styled-components
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../UI/Button/Button';
 
@@ -53,6 +54,7 @@ const HeroImage = styled.img`
 function Hero() {
     // State untuk menyimpan data movie
     const [movie, setMovie] = useState(null);
+    const navigate = useNavigate();
 
     // useEffect untuk fetch data saat komponen pertama kali dirender
     useEffect(() => {
@@ -85,7 +87,10 @@ function Hero() {
                 <HeroDesc>{movie.Plot}</HeroDesc>
 
                 {/* Tombol "Watch" (belum ada aksi) */}
-                <Button variant="primary" size="md">
+                <Button
+                    $variant="primary"
+                    size="md"
+                    onClick={() => navigate('/now-playing')}>
                     Watch
                 </Button>
             </HeroLeft>

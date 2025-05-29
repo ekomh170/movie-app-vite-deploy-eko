@@ -26,20 +26,14 @@ const Brand = styled.div`
     font-weight: 800;
     letter-spacing: 2.5px;
     color: #fff;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
     margin-bottom: 1rem;
-    padding: 0.3em 1.2em;
-    background: rgba(76, 187, 23, 0.92);
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(76, 187, 23, 0.13);
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
     display: inline-block;
-    font-family: 'Montserrat', 'Inter', sans-serif;
     letter-spacing: 2px;
-    transition: background 0.2s;
-    &:hover {
-        background: #39ff12;
-        color: #222;
-    }
+    transition: none;
     @media (min-width: 768px) {
         margin-bottom: 0;
     }
