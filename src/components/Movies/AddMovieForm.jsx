@@ -2,6 +2,8 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import styles from './MovieForm.module.css';
 import Alert from '../Alert/Alert';
+import { Form, Label, Input } from '../UI/Form/Form';
+import Button from '../UI/Button/Button';
 
 export default function AddMovieForm({ movies, setMovies }) {
     // State tunggal untuk form input
@@ -80,62 +82,67 @@ export default function AddMovieForm({ movies, setMovies }) {
         }
     }
 
+    // Kolaborasi: Jika ingin styling custom, aktifkan import styles dan gunakan className dari CSS module
+    // Contoh:
+    // <Form onSubmit={handleSubmit} style={{ marginBottom: '20px' }} className={styles.formContainer}>
+    // Jika tidak ingin pakai CSS module, cukup gunakan styled-components saja.
+
     return (
-        <form
+        <Form
             onSubmit={handleSubmit}
-            className={styles.formContainer}
-            style={{ marginBottom: '20px' }}>
-            {/* Input Title */}
-            <input
+            style={{ marginBottom: '20px' }}
+            className={styles.formContainer}>
+            <Label htmlFor="title">Judul Film</Label>
+            <Input
                 id="title"
                 type="text"
                 value={title}
                 name="title"
                 onChange={handleChange}
-                className={styles.input}
                 placeholder="Judul Film"
+                className={styles.input}
             />
             {errors.title && <Alert>Title wajib diisi</Alert>}
 
-            {/* Input Date */}
-            <input
+            <Label htmlFor="date">Tahun Rilis</Label>
+            <Input
                 id="date"
                 type="text"
                 value={date}
                 name="date"
                 onChange={handleChange}
-                className={styles.input}
                 placeholder="Tahun Rilis"
+                className={styles.input}
             />
             {errors.date && <Alert>Date wajib diisi</Alert>}
 
-            {/* Input Poster */}
-            <input
+            <Label htmlFor="poster">URL Poster</Label>
+            <Input
                 id="poster"
                 type="text"
                 value={poster}
                 name="poster"
                 onChange={handleChange}
-                className={styles.input}
                 placeholder="URL Poster"
+                className={styles.input}
             />
             {errors.poster && <Alert>Poster wajib diisi</Alert>}
 
-            {/* Select Type */}
-            <select
+            <Label htmlFor="type">Tipe</Label>
+            <Input
+                as="select"
                 id="type"
                 value={type}
                 name="type"
                 onChange={handleChange}
-                className={styles.input}>
+                className={styles.select}>
                 <option value="Movie">Movie</option>
                 <option value="Series">Series</option>
-            </select>
+            </Input>
 
-            {/* Tombol Submit */}
-            <button type="submit" className={styles.button}>
+            <Button type="submit" className={styles.button}>
                 Add Movie
-            </button>
-        </form>
+            </Button>
+        </Form>
     );
 }

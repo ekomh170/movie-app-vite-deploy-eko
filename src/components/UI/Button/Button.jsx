@@ -21,7 +21,9 @@ const Button = styled.button`
     color: #fff;
     cursor: pointer;
     background-color: ${({ $variant, theme }) =>
-        theme.colors[$variant] || theme.colors.primary};
+        $variant === 'secondary'
+            ? '#b5179e !important'
+            : theme.colors[$variant] || theme.colors.primary};
     font-size: ${({ size = 'md' }) => sizeMap[size].fontSize};
     padding: ${({ size = 'md' }) => sizeMap[size].padding};
 
@@ -32,6 +34,13 @@ const Button = styled.button`
             display: block;
             width: 100%;
         `}
+
+    &:hover {
+        border-color: #4cbb17;
+        /* background: linear-gradient(90deg, #39ff12 60%, #4cbb17 100%); */
+        box-shadow: 0 4px 16px rgba(76, 187, 23, 0.16);
+        transform: translateY(-2px) scale(1.04);
+    }
 `;
 
 export default Button;

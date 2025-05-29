@@ -11,9 +11,9 @@ function Home() {
     return (
         <>
             <Hero />
-            <Button $variant="primary">Lihat</Button>
+            <Button $variant="primary">Add Movie</Button>
             <Button $variant="secondary" $full>
-                Lihat
+                Add Movie
             </Button>
             <Movies movies={movies} setMovies={setMovies} />
             <Counter />
