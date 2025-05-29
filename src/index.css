@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-/* Hapus @plugin dan @custom-variant karena tidak didukung di file CSS, plugin sudah otomatis aktif jika diinstall dan dikonfigurasi di Tailwind v4 */
-
 :root {
     font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -25,17 +23,6 @@ body {
     background: none;
     color: #222;
     font-family: inherit;
-}
-
-a {
-    font-weight: 500;
-    color: #4cbb17;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-a:hover {
-    color: #39ff12;
 }
 
 h1,
@@ -89,10 +76,6 @@ img {
     :root {
         color: #222;
         background: linear-gradient(135deg, #e0ffe0 0%, #f9fff9 100%);
-    }
-
-    a:hover {
-        color: #4cbb17;
     }
 
     button {

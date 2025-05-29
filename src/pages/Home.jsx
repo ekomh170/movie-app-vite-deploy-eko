@@ -4,7 +4,7 @@ import AddMovieForm from '../components/Movies/AddMovieForm';
 import { useState } from 'react';
 import data from '../utils/constants/data';
 import Counter from '../components/Counter';
-import Button from '../components/Button/Button';
+import Button from '../components/UI/Button/Button';
 
 function Home() {
     const [movies, setMovies] = useState(data);

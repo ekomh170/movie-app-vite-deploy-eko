@@ -1,7 +1,54 @@
-// Import hook React dan CSS module
+// Import hook React dan styled-components
 import { useEffect, useState } from 'react';
-import styles from './Hero.module.css';
-import Button from '../Button/Button';
+import styled from 'styled-components';
+import Button from '../UI/Button/Button';
+
+// Styled components
+const HeroWrapper = styled.section`
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+`;
+const HeroLeft = styled.div`
+    flex: 1;
+    min-width: 300px;
+`;
+const HeroRight = styled.div`
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+`;
+const HeroTitle = styled.h2`
+    font-size: 2.4rem;
+    color: #222;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+`;
+const HeroGenre = styled.h3`
+    font-size: 1.1rem;
+    color: #4cbb17;
+    margin-bottom: 1rem;
+    font-weight: 500;
+`;
+const HeroDesc = styled.p`
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+`;
+const HeroImage = styled.img`
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+`;
 
 function Hero() {
     // State untuk menyimpan data movie
@@ -21,40 +68,32 @@ function Hero() {
 
     // Jika movie belum dimuat, tampilkan loading
     if (!movie) {
-        return <div className={styles.container}>Loading...</div>;
+        return <HeroWrapper>Loading...</HeroWrapper>;
     }
 
     // Jika movie sudah ada, tampilkan informasi film
     return (
-        <div className={styles.container}>
-            <section className={styles.hero}>
-                <div className={styles.hero__left}>
-                    {/* Judul film */}
-                    <h2 className={styles.hero__title}>{movie.Title}</h2>
+        <HeroWrapper>
+            <HeroLeft>
+                {/* Judul film */}
+                <HeroTitle>{movie.Title}</HeroTitle>
 
-                    {/* Genre film */}
-                    <h3 className={styles.hero__genre}>Genre: {movie.Genre}</h3>
+                {/* Genre film */}
+                <HeroGenre>Genre: {movie.Genre}</HeroGenre>
 
-                    {/* Deskripsi film */}
-                    <p className={styles.hero__description}>{movie.Plot}</p>
+                {/* Deskripsi film */}
+                <HeroDesc>{movie.Plot}</HeroDesc>
 
-                    {/* Tombol "Watch" (belum ada aksi) */}
-                    <Button variant="primary">Watch</Button>
-                    {/* <Button variant="primary" full>
-                        Watch
-                    </Button> */}
-                </div>
-
-                <div className={styles.hero__right}>
-                    {/* Gambar poster film */}
-                    <img
-                        className={styles.hero__image}
-                        src={movie.Poster}
-                        alt={movie.Title}
-                    />
-                </div>
-            </section>
-        </div>
+                {/* Tombol "Watch" (belum ada aksi) */}
+                <Button variant="primary" size="md">
+                    Watch
+                </Button>
+            </HeroLeft>
+            <HeroRight>
+                {/* Gambar poster film */}
+                <HeroImage src={movie.Poster} alt={movie.Title} />
+            </HeroRight>
+        </HeroWrapper>
     );
 }
 

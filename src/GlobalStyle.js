@@ -20,16 +20,6 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
 
-  a {
-    font-weight: 500;
-    color: #4cbb17;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  a:hover {
-    color: #39ff12;
-  }
-
   h1, h2, h3, h4, h5, h6 {
     color: #222;
     font-weight: 700;
