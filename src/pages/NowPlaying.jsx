@@ -1,7 +1,11 @@
+import { Heading } from '../components/UI/Typography/Typography';
+
 function NowPlayingMovie() {
     return (
         <>
-            <h2>Now Playing Movie</h2>
+            <Heading as="h2" level={2}>
+                Now Playing Movie
+            </Heading>
         </>
     );
 }

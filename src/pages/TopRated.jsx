@@ -1,7 +1,11 @@
+import { Heading } from '../components/UI/Typography/Typography';
+
 function TopRatedMovie() {
     return (
         <>
-            <h2>Top Rated Movie</h2>
+            <Heading as="h2" level={2}>
+                Top Rated Movie
+            </Heading>
         </>
     );
 }

@@ -1,7 +1,11 @@
+import { Heading } from '../components/UI/Typography/Typography';
+
 function CreateMovie() {
     return (
         <>
-            <h2>Create Movie</h2>
+            <Heading as="h2" level={2}>
+                Create Movie
+            </Heading>
         </>
     );
 }
