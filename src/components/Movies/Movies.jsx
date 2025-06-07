@@ -2,14 +2,7 @@ import styles from './Movies.module.css';
 import Movie from './Movie';
 
 export default function Movies(props) {
-    const { movies, setMovies } = props;
-
-    function handleClick(e) {
-        e.preventDefault();
-
-        const movie = {}; // Anda mungkin ingin menambahkan properti ke objek movie ini
-        setMovies([...movies, movie]);
-    }
+    const { movies } = props;
 
     return (
         <div className={styles.container}>
@@ -20,13 +13,7 @@ export default function Movies(props) {
                         <Movie key={movie.id} movie={movie} />
                     ))}
                 </div>
-                {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-                <button
-                    type="submit"
-                    onClick={handleClick}
-                    className={styles.button}>
-                    Add Movie
-                </button>
+                {/* Add Movie button removed. Now only rendered in Home.jsx if needed */}
             </section>
         </div>
     );
