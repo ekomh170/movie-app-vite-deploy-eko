@@ -21,8 +21,17 @@ function PopularMovie() {
 
     return (
         <div className="container">
-            <Heading>Popular Movies</Heading>
             <Hero />
+            {/* Judul dipindahkan ke bawah Hero agar konsisten dengan permintaan */}
+            <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+                <Heading
+                    style={{
+                        color: '#4cbb17',
+                        textShadow: '0 2px 8px #e0ffe0',
+                    }}>
+                    Popular Movies
+                </Heading>
+            </div>
             <Movies movies={movies} />
         </div>
     );
