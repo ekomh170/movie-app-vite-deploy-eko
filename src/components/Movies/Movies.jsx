@@ -3,7 +3,7 @@ import Movie from "./Movie";
 
 // Komponen Movies menerima props movies (array film) dan langsung menampilkan daftar Movie
 export default function Movies(props) {
-    const { movies } = props;
+    const { movies, title } = props;
 
     // Jika data movies kosong, tampilkan pesan fallback
     if (!movies || movies.length === 0) {
@@ -25,7 +25,17 @@ export default function Movies(props) {
     return (
         <div className={styles.container}>
             <section className={styles.movies}>
-                {/* Judulnya diatur dari halaman pemanggil (Popular, Now Playing, Top Rated) */}
+                {/* Tampilkan judul jika ada title props */}
+                {title && (
+                    <h2
+                        style={{
+                            textAlign: "center",
+                            marginBottom: "1rem",
+                            color: "#334155",
+                        }}>
+                        {title}
+                    </h2>
+                )}
                 <div className={styles.movie__container}>
                     {/* Mapping setiap movie ke komponen Movie */}
                     {movies.map((movie) => (
