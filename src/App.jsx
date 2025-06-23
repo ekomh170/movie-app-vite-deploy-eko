@@ -1,6 +1,8 @@
 // Import komponen dan library utama
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { useState } from "react";
+import data from "./utils/constants/data";
 
 // Import halaman utama aplikasi
 import Home from "./pages/Home";
@@ -20,6 +22,7 @@ import GlobalStyle from "./GlobalStyle";
  * Mengatur ThemeProvider, GlobalStyle, Layout, dan Routing aplikasi
  */
 function App() {
+    const [movies, setMovies] = useState(data);
     return (
         // ThemeProvider untuk styled-components agar theme bisa diakses di seluruh komponen
         <ThemeProvider theme={theme}>
@@ -30,9 +33,17 @@ function App() {
                 {/* Routing aplikasi menggunakan react-router-dom */}
                 <Routes>
                     {/* Halaman utama */}
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home movies={movies} />} />
                     {/* Halaman tambah movie */}
-                    <Route path="/add-movie" element={<CreateMovie />} />
+                    <Route
+                        path="/add-movie"
+                        element={
+                            <CreateMovie
+                                movies={movies}
+                                setMovies={setMovies}
+                            />
+                        }
+                    />
                     {/* Halaman popular, now playing, top rated */}
                     <Route path="/popular" element={<PopularMovie />} />
                     <Route path="/now-playing" element={<NowPlayingMovie />} />

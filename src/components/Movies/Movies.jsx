@@ -1,10 +1,8 @@
 import styles from "./Movies.module.css";
 import Movie from "./Movie";
 
-// Komponen Movies menerima props movies (array film) dan langsung menampilkan daftar Movie
-export default function Movies(props) {
-    const { movies, title } = props;
-
+// Komponen Movies menerima props title dan movies dari parent
+export default function Movies({ title, movies }) {
     // Jika data movies kosong, tampilkan pesan fallback
     if (!movies || movies.length === 0) {
         return (
