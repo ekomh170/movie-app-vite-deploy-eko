@@ -23,3 +23,4 @@
 10. [Tugas 4/Pertemuan 11](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-4-pertemuan-11)
 11. [Tugas 5/Pertemuan 12](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-5-pertemuan-12)
 12. [Pertemuan 13](https://github.com/ekomh170/frontend-2025-se01/tree/pertemuan-13)
+13. [Tugas 6/Pertemuan 14 - React Context](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-6-pertemuan-14-react-context)
