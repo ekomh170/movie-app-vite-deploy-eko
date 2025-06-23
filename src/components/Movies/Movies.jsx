@@ -1,22 +1,40 @@
-import styles from './Movies.module.css';
-import Movie from './Movie';
+import styles from "./Movies.module.css";
+import Movie from "./Movie";
 
-// Komponen Movies nerima props movies (array film) dan langsung nampilin daftar Movie
+// Komponen Movies menerima props movies (array film) dan langsung menampilkan daftar Movie
 export default function Movies(props) {
     const { movies } = props;
 
+    // Jika data movies kosong, tampilkan pesan fallback
+    if (!movies || movies.length === 0) {
+        return (
+            <p
+                style={{
+                    textAlign: "center",
+                    color: "#64748b",
+                    margin: "2rem 0",
+                    fontWeight: "bold",
+                }}>
+                {/* Pesan fallback jika tidak ada rekomendasi */}
+                Tidak ada rekomendasi film.
+            </p>
+        );
+    }
+
+    // Render daftar film jika data tersedia
     return (
         <div className={styles.container}>
             <section className={styles.movies}>
-                {/* Judulnya udah dihapus, sekarang ngikut dari halaman pemanggil (Popular, Now Playing, Top Rated) */}
+                {/* Judulnya diatur dari halaman pemanggil (Popular, Now Playing, Top Rated) */}
                 <div className={styles.movie__container}>
+                    {/* Mapping setiap movie ke komponen Movie */}
                     {movies.map((movie) => (
                         <Movie key={movie.id} movie={movie} />
                     ))}
                 </div>
-                {/* Tombol Add Movie juga udah dihapus, sekarang cuma ada di Home.jsx kalau emang dibutuhin */}
+                {/* Tombol Add Movie hanya ada di Home.jsx jika dibutuhkan */}
             </section>
         </div>
     );
 }
-// Struktur & komentar udah dibikin santai biar gampang dibaca temen se-tim :)
+// Struktur & komentar sudah dibuat santai agar mudah dibaca tim :)
