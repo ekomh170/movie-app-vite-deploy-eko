@@ -21,3 +21,5 @@
 8. [Tugas 3/Pertemuan 09](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-3-pertemuan-9)
 9. [Pertemuan 10](https://github.com/ekomh170/frontend-2025-se01/tree/pertemuan-10)
 10. [Tugas 4/Pertemuan 11](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-4-pertemuan-11)
+11. [Tugas 5/Pertemuan 12](https://github.com/ekomh170/frontend-2025-se01/tree/tugas-5-pertemuan-12)
+12. [Pertemuan 13](https://github.com/ekomh170/frontend-2025-se01/tree/pertemuan-13)
