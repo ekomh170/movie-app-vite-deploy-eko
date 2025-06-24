@@ -1,8 +1,7 @@
 // Import komponen dan library utama
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { useState } from "react";
-import data from "./utils/constants/data";
+import { MovieProvider } from "./context/MovieContext";
 
 // Import halaman utama aplikasi
 import Home from "./pages/Home";
@@ -22,36 +21,33 @@ import GlobalStyle from "./GlobalStyle";
  * Mengatur ThemeProvider, GlobalStyle, Layout, dan Routing aplikasi
  */
 function App() {
-    const [movies, setMovies] = useState(data);
     return (
         // ThemeProvider untuk styled-components agar theme bisa diakses di seluruh komponen
         <ThemeProvider theme={theme}>
             {/* GlobalStyle untuk reset dan style global */}
             <GlobalStyle />
-            {/* Layout utama aplikasi (Navbar, Footer, dsb) */}
-            <Layout>
-                {/* Routing aplikasi menggunakan react-router-dom */}
-                <Routes>
-                    {/* Halaman utama */}
-                    <Route path="/" element={<Home movies={movies} />} />
-                    {/* Halaman tambah movie */}
-                    <Route
-                        path="/add-movie"
-                        element={
-                            <CreateMovie
-                                movies={movies}
-                                setMovies={setMovies}
-                            />
-                        }
-                    />
-                    {/* Halaman popular, now playing, top rated */}
-                    <Route path="/popular" element={<PopularMovie />} />
-                    <Route path="/now-playing" element={<NowPlayingMovie />} />
-                    <Route path="/top-rated" element={<TopRatedMovie />} />
-                    {/* Routing dinamis untuk halaman detail, menerima param id TMDB */}
-                    <Route path="/detail/:id" element={<DetailMovie />} />
-                </Routes>
-            </Layout>
+            {/* Provider untuk state movie yang bisa diakses di seluruh aplikasi */}
+            <MovieProvider>
+                {/* Layout utama aplikasi (Navbar, Footer, dsb) */}
+                <Layout>
+                    {/* Routing aplikasi menggunakan react-router-dom */}
+                    <Routes>
+                        {/* Halaman utama */}
+                        <Route path="/" element={<Home />} />
+                        {/* Halaman tambah movie */}
+                        <Route path="/add-movie" element={<CreateMovie />} />
+                        {/* Halaman popular, now playing, top rated */}
+                        <Route path="/popular" element={<PopularMovie />} />
+                        <Route
+                            path="/now-playing"
+                            element={<NowPlayingMovie />}
+                        />
+                        <Route path="/top-rated" element={<TopRatedMovie />} />
+                        {/* Routing dinamis untuk halaman detail, menerima param id TMDB */}
+                        <Route path="/detail/:id" element={<DetailMovie />} />
+                    </Routes>
+                </Layout>
+            </MovieProvider>
         </ThemeProvider>
     );
 }
