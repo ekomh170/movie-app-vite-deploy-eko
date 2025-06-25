@@ -6,9 +6,7 @@ function CreateMovie() {
     return (
         <>
             <Hero />
-            <Heading as="h2" level={2}>
-                Create Movie
-            </Heading>
+            <Heading as="h2">Create Movie</Heading>
             <AddMovieForm />
         </>
     );

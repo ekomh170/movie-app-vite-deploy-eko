@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import DetailMovie from "./DetailMovie"; // Komponen untuk menampilkan detail film
 import Movies from "../components/Movies/Movies"; // Komponen untuk menampilkan daftar rekomendasi film
+import { ENDPOINTS } from "../utils/constants/endpoints";
 
 /**
  * Halaman Detail
@@ -25,11 +26,9 @@ function Detail() {
             setError(null); // Reset error
             setMovie(null); // Reset data movie
             try {
-                const API_KEY = import.meta.env.VITE_API_KEY;
-                // Tambahkan videos agar trailer bisa diakses
-                const params = `?api_key=${API_KEY}&append_to_response=videos`;
-                const URL = `https://api.themoviedb.org/3/movie/${id}${params}`;
-                const response = await axios.get(URL);
+                const response = await axios.get(
+                    `https://api.themoviedb.org/3${ENDPOINTS.DETAIL(id)}`
+                );
                 setMovie(response.data); // Simpan data movie ke state
             } catch {
                 setError("Movie not found"); // Tampilkan error jika gagal fetch
@@ -44,10 +43,11 @@ function Detail() {
         async function getRecommendationMovies() {
             setMovies([]); // Reset data rekomendasi
             try {
-                const API_KEY = import.meta.env.VITE_API_KEY;
-                const params = `?api_key=${API_KEY}`;
-                const URL = `https://api.themoviedb.org/3/movie/${id}/recommendations${params}`;
-                const response = await axios.get(URL);
+                const response = await axios.get(
+                    `https://api.themoviedb.org/3${ENDPOINTS.RECOMMENDATIONS(
+                        id
+                    )}`
+                );
                 setMovies(response.data.results); // Simpan data rekomendasi ke state
             } catch {
                 // Optional: bisa tambahkan error handling jika perlu

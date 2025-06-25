@@ -1,9 +1,10 @@
 // Import hook React dan styled-components
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Button from '../UI/Button/Button';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Button from "../UI/Button/Button";
+import axios from "axios";
+import { ENDPOINTS } from "../../utils/constants/endpoints";
 
 // Styled components
 const HeroWrapper = styled.section`
@@ -54,44 +55,29 @@ const HeroImage = styled.img`
 
 function Hero() {
     // State untuk menyimpan data movie
-    const [movie, setMovie] = useState('');
+    const [movie, setMovie] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
-        const API_KEY = import.meta.env.VITE_API_KEY; // Ambil API key dari environment variable
-
         async function fetchTrendingMovie() {
-            const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`; // URL API untuk film populer
-            const response = await axios(URL); // Fetch data dari API/ Fetch data dari API menggunakan axios
-            const firstMovie = response.data.results[0]; // Ambil film pertama dari hasil
-            return firstMovie; // Kembalikan film pertama
+            const response = await axios(
+                `https://api.themoviedb.org/3${ENDPOINTS.TRENDING}`
+            );
+            const firstMovie = response.data.results[0];
+            return firstMovie;
         }
 
         async function fetchDetailMovie() {
-            const trendingMovie = await fetchTrendingMovie(); // Panggil fungsi untuk mendapatkan film trending
-            const id = trendingMovie.id; // Ambil ID film dari data trending
-
-            const params = `?api_key=${API_KEY}&language=en-US`; // Parameter untuk request detail film
-            const URL = `https://api.themoviedb.org/3/movie/${id}${params}`; // URL untuk detail film
-            const response = await axios(URL); // Fetch detail film menggunakan axios
-            setMovie(response.data); // Simpan data film ke state
+            const trendingMovie = await fetchTrendingMovie();
+            const id = trendingMovie.id;
+            const response = await axios(
+                `https://api.themoviedb.org/3${ENDPOINTS.DETAIL(id)}`
+            );
+            setMovie(response.data);
         }
 
-        fetchDetailMovie(); // Panggil fungsi untuk fetch detail film
-        fetchTrendingMovie(); // Panggil fungsi untuk fetch film trending (tidak digunakan di sini, hanya untuk side effect)
+        fetchDetailMovie();
     }, []);
-
-    // useEffect untuk fetch data saat komponen pertama kali dirender
-    // useEffect(() => {
-    //     async function fetchMovie() {
-    //         const url = 'https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590';
-    //         const response = await fetch(url);
-    //         const data = await response.json();
-    //         setMovie(data);
-    //     }
-
-    //     fetchMovie();
-    // }, []);
 
     // Jika movie belum dimuat, tampilkan loading
     if (!movie) {
@@ -115,7 +101,7 @@ function Hero() {
                 <Button
                     $variant="primary"
                     size="md"
-                    onClick={() => navigate('/now-playing')}>
+                    onClick={() => navigate("/now-playing")}>
                     How to Add Link Trailer?
                 </Button>
             </HeroLeft>
