@@ -24,7 +24,7 @@ function PopularMovie() {
             {/* Loading, error, dan data */}
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {data && <Movies movies={data.results} title="Popular Movies" />}
+            {data && <Movies title="Popular Movies" movies={data.results} />}
         </div>
     );
 }

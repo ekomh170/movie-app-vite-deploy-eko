@@ -2,9 +2,10 @@ import styles from "./Movies.module.css";
 import Movie from "./Movie";
 import { useMoviesContext } from "../../context/MoviesContext";
 
-// Komponen Movies menerima props title dan movies dari parent
-export default function Movies({ title }) {
-    const { movies } = useMoviesContext();
+// Komponen Movies menerima props title dan optional movies (untuk rekomendasi)
+export default function Movies({ title, movies: moviesProp }) {
+    const { movies: moviesContext } = useMoviesContext();
+    const movies = moviesProp || moviesContext;
     // Jika data movies kosong, tampilkan pesan fallback
     if (!movies || movies.length === 0) {
         return (
@@ -42,7 +43,6 @@ export default function Movies({ title }) {
                         <Movie key={movie.id} movie={movie} />
                     ))}
                 </div>
-                {/* Tombol Add Movie hanya ada di Home.jsx jika dibutuhkan */}
             </section>
         </div>
     );

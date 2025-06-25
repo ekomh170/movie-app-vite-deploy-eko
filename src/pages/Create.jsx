@@ -6,7 +6,16 @@ function CreateMovie() {
     return (
         <>
             <Hero />
-            <Heading as="h2">Create Movie</Heading>
+            {/* Judul dipindahkan ke bawah Hero agar konsisten dengan permintaan */}
+            <div style={{ textAlign: "center", margin: "2rem 0" }}>
+                <Heading
+                    style={{
+                        color: "#4cbb17",
+                        textShadow: "0 2px 8px #e0ffe0",
+                    }}>
+                    Create Movie
+                </Heading>
+            </div>
             <AddMovieForm />
         </>
     );

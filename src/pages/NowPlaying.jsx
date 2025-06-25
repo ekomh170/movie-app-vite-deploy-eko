@@ -28,7 +28,7 @@ function NowPlayingMovie() {
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {data && (
-                <Movies movies={data.results} title="Now Playing Movies" />
+                <Movies title="Now Playing Movies" movies={data.results} />
             )}
         </div>
     );

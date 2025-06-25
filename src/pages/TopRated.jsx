@@ -8,7 +8,6 @@ import { ENDPOINTS } from "../utils/constants/endpoints";
 
 // Komponen TopRatedMovie: nampilin daftar film "Top Rated" dari TMDB
 function TopRatedMovie() {
-    // State buat simpen data film
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -37,7 +36,7 @@ function TopRatedMovie() {
                 </Heading>
             </div>
             {/* Tampilkan daftar film pake komponen Movies */}
-            <Movies movies={movies} />
+            <Movies title="Top Rated Movies" movies={movies} />
         </div>
     );
 }
