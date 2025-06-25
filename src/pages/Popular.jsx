@@ -3,10 +3,19 @@ import { useFetch } from "../hooks/useFetch";
 import Hero from "../components/Hero/Hero";
 import Movies from "../components/Movies/Movies";
 import { ENDPOINTS } from "../utils/constants/endpoints";
+import { useEffect } from "react";
+import { useMoviesContext } from "../context/MoviesContext";
 
 function PopularMovie() {
     // Fetch data popular movies pakai custom hook dan endpoint constant
     const { data, loading, error } = useFetch(ENDPOINTS.POPULAR);
+    const { setMovies } = useMoviesContext();
+
+    useEffect(() => {
+        if (data && data.results) {
+            setMovies(data.results);
+        }
+    }, [data, setMovies]);
 
     return (
         <div className="container">
@@ -24,7 +33,8 @@ function PopularMovie() {
             {/* Loading, error, dan data */}
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {data && <Movies title="Popular Movies" movies={data.results} />}
+            {/* Movies akan ambil data dari context */}
+            <Movies title="Popular Movies" />
         </div>
     );
 }

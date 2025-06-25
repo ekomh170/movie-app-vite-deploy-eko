@@ -4,11 +4,20 @@ import { useFetch } from "../hooks/useFetch";
 import Movies from "../components/Movies/Movies";
 import Hero from "../components/Hero/Hero";
 import { ENDPOINTS } from "../utils/constants/endpoints";
+import { useEffect } from "react";
+import { useMoviesContext } from "../context/MoviesContext";
 
 // Komponen NowPlayingMovie: nampilin daftar film "Now Playing" dari TMDB
 function NowPlayingMovie() {
     // Fetch data now playing movies pakai custom hook dan endpoint constant
     const { data, loading, error } = useFetch(ENDPOINTS.NOW_PLAYING);
+    const { setMovies } = useMoviesContext();
+
+    useEffect(() => {
+        if (data && data.results) {
+            setMovies(data.results);
+        }
+    }, [data, setMovies]);
 
     return (
         <div className="container">
@@ -27,9 +36,7 @@ function NowPlayingMovie() {
             {/* Loading, error, dan data */}
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {data && (
-                <Movies title="Now Playing Movies" movies={data.results} />
-            )}
+            <Movies title="Now Playing Movies" />
         </div>
     );
 }

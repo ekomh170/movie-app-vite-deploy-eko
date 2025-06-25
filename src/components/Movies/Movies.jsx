@@ -5,6 +5,7 @@ import { useMoviesContext } from "../../context/MoviesContext";
 // Komponen Movies menerima props title dan optional movies (untuk rekomendasi)
 export default function Movies({ title, movies: moviesProp }) {
     const { movies: moviesContext } = useMoviesContext();
+    // Jika props movies dikirim (misal untuk rekomendasi), gunakan itu. Jika tidak, pakai dari context
     const movies = moviesProp || moviesContext;
     // Jika data movies kosong, tampilkan pesan fallback
     if (!movies || movies.length === 0) {

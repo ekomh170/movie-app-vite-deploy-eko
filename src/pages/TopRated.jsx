@@ -1,25 +1,22 @@
 // Import Heading buat judul, useEffect & useState buat fetch data, axios buat HTTP request, Movies buat list film, Hero buat banner atas
 import { Heading } from "../components/UI/Typography/Typography";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useFetch } from "../hooks/useFetch";
 import Movies from "../components/Movies/Movies";
 import Hero from "../components/Hero/Hero";
 import { ENDPOINTS } from "../utils/constants/endpoints";
+import { useEffect } from "react";
+import { useMoviesContext } from "../context/MoviesContext";
 
 // Komponen TopRatedMovie: nampilin daftar film "Top Rated" dari TMDB
 function TopRatedMovie() {
-    const [movies, setMovies] = useState([]);
+    const { data, loading, error } = useFetch(ENDPOINTS.TOP_RATED);
+    const { setMovies } = useMoviesContext();
 
     useEffect(() => {
-        // Fetch data film top rated dari API pas komponen mount
-        async function getTopRatedMovies() {
-            const response = await axios.get(
-                `https://api.themoviedb.org/3${ENDPOINTS.TOP_RATED}`
-            );
-            setMovies(response.data.results);
+        if (data && data.results) {
+            setMovies(data.results);
         }
-        getTopRatedMovies();
-    }, []);
+    }, [data, setMovies]);
 
     return (
         <div className="container">
@@ -35,8 +32,10 @@ function TopRatedMovie() {
                     Top Rated Movies
                 </Heading>
             </div>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             {/* Tampilkan daftar film pake komponen Movies */}
-            <Movies title="Top Rated Movies" movies={movies} />
+            <Movies title="Top Rated Movies" />
         </div>
     );
 }
