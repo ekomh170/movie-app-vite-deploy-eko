@@ -1,10 +1,10 @@
 import styles from "./Movies.module.css";
 import Movie from "./Movie";
-import { useMovieContext } from "../../context/MovieContext";
+import { useMoviesContext } from "../../context/MoviesContext";
 
 // Komponen Movies menerima props title dan movies dari parent
 export default function Movies({ title }) {
-    const { movies } = useMovieContext();
+    const { movies } = useMoviesContext();
     // Jika data movies kosong, tampilkan pesan fallback
     if (!movies || movies.length === 0) {
         return (

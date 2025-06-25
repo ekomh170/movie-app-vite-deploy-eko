@@ -1,7 +1,7 @@
 // Import komponen dan library utama
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { MovieProvider } from "./context/MovieContext";
+import { MoviesProvider } from "./context/MoviesContext";
 
 // Import halaman utama aplikasi
 import Home from "./pages/Home";
@@ -27,7 +27,7 @@ function App() {
             {/* GlobalStyle untuk reset dan style global */}
             <GlobalStyle />
             {/* Provider untuk state movie yang bisa diakses di seluruh aplikasi */}
-            <MovieProvider>
+            <MoviesProvider>
                 {/* Layout utama aplikasi (Navbar, Footer, dsb) */}
                 <Layout>
                     {/* Routing aplikasi menggunakan react-router-dom */}
@@ -47,7 +47,7 @@ function App() {
                         <Route path="/detail/:id" element={<DetailMovie />} />
                     </Routes>
                 </Layout>
-            </MovieProvider>
+            </MoviesProvider>
         </ThemeProvider>
     );
 }

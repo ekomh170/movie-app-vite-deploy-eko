@@ -1,10 +1,10 @@
 import Hero from "../components/Hero/Hero";
 import Movies from "../components/Movies/Movies";
 import Counter from "../components/Counter";
-import { useMovieContext } from "../context/MovieContext";
+import { useMoviesContext } from "../context/MoviesContext";
 
 function Home() {
-    const { movies } = useMovieContext();
+    const { movies } = useMoviesContext();
     return (
         <>
             <Hero />

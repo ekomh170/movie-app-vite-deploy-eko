@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMovieContext } from "../../context/MovieContext";
+import { useMoviesContext } from "../../context/MoviesContext";
 import styles from "./MovieForm.module.css";
 import Alert from "../Alert/Alert";
 import { Form, Label, Input } from "../UI/Form/Form";
@@ -17,7 +17,7 @@ export default function AddMovieForm() {
     const [errors, setErrors] = useState({});
     const { title, date, poster, type } = formData;
     const navigate = useNavigate();
-    const { movies, setMovies } = useMovieContext();
+    const { movies, setMovies } = useMoviesContext();
 
     function handleChange(e) {
         const { name, value } = e.target;
